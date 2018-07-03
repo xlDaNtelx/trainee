@@ -34,19 +34,23 @@ class Field extends Component {
 
     focusHandler = () => {
         const fieldState = this.state;
+        for(let index in fieldState.errors)
+            fieldState.errors[index] = null
         if(!fieldState.focused) {
             fieldState.focused = true;
-            this.props.onFocus({data: fieldState});
         }
+        this.props.onFocus({data: fieldState});
     }
 
     confirmPasswordFocusHandler = () => {
         const fieldState = this.state;
+        for(let index in fieldState.errors)
+            fieldState.errors[index] = null
         if(!fieldState.focused) {
             fieldState.focused = true;
-            this.props.onFocus({data: fieldState});
         }
-        this.validateConfirmPassword();
+        this.props.onFocus({data: fieldState});
+        // this.validateConfirmPassword();
     }
 
     blurHandler = () => {

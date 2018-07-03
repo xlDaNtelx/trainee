@@ -23,11 +23,11 @@ export const passwordLengthValidator = (value) => {
 }
 
 export const dateFormatValidator = (value) => {
-    return (value.match(/([0][1-9]|[1][0-9]|[2][0-9]|[3][0-1])\/([0][1-9]|[1][0-2])\/([1][9][4-9][0-9]|[2][0][0][1-9])/) === null) 
+    return (value.match(/([0][1-9]|[1][0-9]|[2][0-9]|[3][0-1])\/([0][1-9]|[1][0-2])\/([1][9][4-9][0-9]|[2][0][0][1-9])/) === null || value.length > 10) 
         ? 'Date must be in format dd/mm/yyyy for example "20/10/1996"' 
         : null;
 }
 
 export const confirmPasswordValidator = (passValue = "", confirmPassValue = "") => {
-    return (passValue != confirmPassValue) ? "Password and confirm password must have the same value" : null;
+    return (passValue !== confirmPassValue) ? "Password and confirm password must have the same value" : null;
 }
