@@ -8,6 +8,3 @@ ReactDOM.render(
   <RegForm />,
   document.getElementById('root'),
 );
-
-
-  
