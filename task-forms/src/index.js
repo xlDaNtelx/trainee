@@ -70,8 +70,6 @@ class RegForm extends Component {
     
     validatorHandler = (name, validator, index) => {
         const fieldState = this.state[name];
-        //console.log(fieldState.value)
-        //console.log(validator(fieldState.value))
         fieldState.errors[index] = validator(fieldState.value);
         this.setState({
             [name]: fieldState
@@ -102,7 +100,7 @@ class RegForm extends Component {
         event.preventDefault();
         console.log('The form was sent');
     }
-
+    
     render() {
         return(
             <div className="container form-margin">
@@ -143,7 +141,6 @@ class RegForm extends Component {
                         onChange={this.changeHandler}
                         data={this.state.dateOfBirth}
                         validateHandler={this.validatorHandler}
-                        placeholder="dd/mm/yyyy"
                     />
                     <Field
                         type="submit"

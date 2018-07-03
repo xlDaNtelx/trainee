@@ -18,3 +18,7 @@ body {
   color: rgb(34, 103, 105);
   font-weight: bolder;
 }
+
+.btn-width {
+    width: 100%;
+}

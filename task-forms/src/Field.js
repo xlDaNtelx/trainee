@@ -115,6 +115,7 @@ class Field extends Component {
                                 onFocus={this.focusHandler}
                                 onBlur={this.validate}
                                 invalid={this.errorsCheck()}
+                                placeholder="Enter username..." 
                             />
                             {this.showErrors(true)}
                         </Col>
@@ -133,6 +134,7 @@ class Field extends Component {
                                 onFocus={this.focusHandler}
                                 onBlur={this.validate}
                                 invalid={this.errorsCheck()}
+                                placeholder="Enter password..."
                             />
                             {this.showErrors(true)}
                         </Col>
@@ -151,6 +153,7 @@ class Field extends Component {
                                 onFocus={this.confirmPasswordFocusHandler}
                                 onBlur={this.validateConfirmPassword}
                                 invalid={this.errorsCheck()}
+                                placeholder="Enter confirm password..."
                             />
                             {this.showErrors(true)}
                         </Col>
@@ -169,7 +172,7 @@ class Field extends Component {
                                 onFocus={this.focusHandler}
                                 onBlur={this.validate}
                                 invalid={this.errorsCheck()}
-                                // placeholder="mm/dd/yyyy"
+                                placeholder="Enter date of birth..."
                             />
                             {this.showErrors(true)}
                         </Col>
@@ -178,11 +181,11 @@ class Field extends Component {
             case 'submit':
                 return(
                     <FormGroup row>   
-                        <Col xs={1} className="mx-auto">
+                        <Col xs={6} className="mx-auto">
                             <Button 
                                 color="success" 
                                 size="md" 
-                                className="mx-auto"
+                                className="mx-auto btn-width"
                                 onClick={this.validateAll}
                             >
                             Click me</Button>
