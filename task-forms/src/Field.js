@@ -21,7 +21,7 @@ class Field extends PureComponent {
 
   render() {
     const { data, label, name, ...other } = this.props;
-    const { errors } = data;
+    const { errors, dirty, focused } = data;
     return (
       <FormGroup row>
         <Col xs={6} className="mx-auto">
@@ -33,7 +33,7 @@ class Field extends PureComponent {
             onFocus={this.handleFocus}
             onChange={this.handleChange}
             onBlur={this.handleBlur}
-            invalid={!!errors.length}
+            invalid={!!errors.length && dirty && !focused}
             placeholder={`Enter ${label}...`}
           />
           {!!errors.length && (

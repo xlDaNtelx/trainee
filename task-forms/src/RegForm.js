@@ -58,8 +58,16 @@ class RegForm extends PureComponent {
     this.state = this.validateFields(fields);
   }
 
-  validateForm = (fields) => {
+  validateForm = (fields = this.state) => {
     const { password, confirmPassword } = fields;
+    if(this.isValid({password, confirmPassword})) {
+      if(password.value !== confirmPassword.value){
+        const cpass = {...fields.confirmPassword};
+        cpass.errors.push("Passoword and confirm password must be the equil");
+        fields.confirmPassword = cpass;  
+      }
+    }
+    fields.confirmPassword = {...confirmPassword};
     return fields;
   };
 
@@ -94,8 +102,8 @@ class RegForm extends PureComponent {
     const field = { ...this.state[name] };
     field.value = value;
     const fields = this.validateFields({ ...this.state, [name]: field });
-    this.validateForm(fields);
     this.setState(fields);
+    this.validateForm(fields);
   };
 
   handleBlur = name => {
@@ -106,10 +114,18 @@ class RegForm extends PureComponent {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    const fields = {};
+    Object.entries(this.state).forEach(([name]) => {
+      const field = {...this.state[name]};
+      field.dirty = true;
+      fields[name] = field;
+    });
+    this.setState(fields);
     if (this.isValid(this.state)) {
       console.log('The form was sent');
     }
   };
+
 
   render() {
     const { username, password, confirmPassword, dateOfBirth } = this.state;
@@ -128,7 +144,7 @@ class RegForm extends PureComponent {
           />
           <Field
             type="password"
-            label="Username"
+            label="Password"
             name="password"
             value={password.value}
             data={password}
