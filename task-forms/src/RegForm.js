@@ -55,10 +55,15 @@ class RegForm extends PureComponent {
         focused: false,
       },
     };
-    this.state = this.validateForm(fields);
+    this.state = this.validateFields(fields);
   }
 
-  validateForm(fields) {
+  validateForm = (fields) => {
+    const { password, confirmPassword } = fields;
+    return fields;
+  };
+
+  validateFields(fields) {
     Object.entries(fields).forEach(([name, field]) => {
       const { value, validators = [] } = field;
       field.errors = validators
@@ -72,8 +77,8 @@ class RegForm extends PureComponent {
     return fields;
   }
 
-  isValid() {
-    return Object.entries(this.state).every(([_, field]) => {
+  isValid(fields) {
+    return Object.entries(fields).every(([_, field]) => {
       return !field.errors.length;
     });
   }
@@ -88,7 +93,9 @@ class RegForm extends PureComponent {
   handleChange = (name, value) => {
     const field = { ...this.state[name] };
     field.value = value;
-    this.setState(this.validateForm({ ...this.state, [name]: field }));
+    const fields = this.validateFields({ ...this.state, [name]: field });
+    this.validateForm(fields);
+    this.setState(fields);
   };
 
   handleBlur = name => {
@@ -99,7 +106,7 @@ class RegForm extends PureComponent {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    if (this.isValid()) {
+    if (this.isValid(this.state)) {
       console.log('The form was sent');
     }
   };
