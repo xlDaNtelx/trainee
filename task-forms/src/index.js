@@ -64,8 +64,9 @@ class RegForm extends Component {
                     Validators.dateFormatValidator
                 ],
             },
-            mainValidator: this.validatorHandler
+            mainValidator: this.validatorHandler,
         }
+        this.validateAll();
     }
     
     validatorHandler = (name, validator, index) => {
@@ -100,6 +101,16 @@ class RegForm extends Component {
         event.preventDefault();
         console.log('The form was sent');
     }
+
+    validateAll = () => {
+        for(let fieldKey in this.state) {
+            if(typeof this.state[fieldKey] === 'object') {
+                for(let index in this.state[fieldKey].validators) {
+                    this.validatorHandler(fieldKey, this.state[fieldKey].validators[index], index);
+                }
+            } 
+        }
+    }
     
     render() {
         return(
@@ -112,6 +123,8 @@ class RegForm extends Component {
                         onChange={this.changeHandler}
                         data={this.state.username}
                         validateHandler={this.validatorHandler}
+                        fieldType="text"
+                        name="Username"
                     />
                     <Field 
                         type="password" 
@@ -121,34 +134,42 @@ class RegForm extends Component {
                         onChange={this.changeHandler}
                         data={this.state.password}
                         validateHandler={this.validatorHandler}
+                        fieldType="password"
+                        name="Password"
                     />
                     <Field 
                         type="confirmPassword" 
                         value={this.state.confirmPassword.value}
-                        // onBlur={}
+                        name="Confirm password"
                         onFocus={this.focusHandler} 
                         onChange={this.changeHandler}
                         data={this.state.confirmPassword}
                         passwordState={this.state.password}
                         validateHandler={this.validatorHandler}
                         validateConfirmPasswordHandler={this.validatorConfirmPasswordHandler}
+                        fieldType="Confirm password"
                     />
                     <Field 
                         type="dateOfBirth"
                         value={this.state.dateOfBirth.value}
-                        // onBlur={}
+                        name="Date of birth"
                         onFocus={this.focusHandler} 
                         onChange={this.changeHandler}
                         data={this.state.dateOfBirth}
                         validateHandler={this.validatorHandler}
+                        fieldType="text"
                     />
-                    <Field
-                        type="submit"
-                        data={this.state.submit}
-                        fieldsState={this.state}
-                        validateHandler={this.validatorHandler}
-                    >
-                    </Field>
+                    <FormGroup row>   
+                        <Col xs={6} className="mx-auto">
+                            <Button 
+                                color="success" 
+                                size="md" 
+                                className="mx-auto btn-width"
+                                onClick={this.validateAll}
+                            >
+                            Click me</Button>
+                        </Col>
+                    </FormGroup>
                 </Form>
             </div>
         );

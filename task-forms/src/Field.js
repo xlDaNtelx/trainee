@@ -7,7 +7,6 @@ class Field extends Component {
     constructor(props) {
         super(props);
         this.state = props.data;
-        console.log(props);
     }
 
     changeHandler = (event) => {
@@ -67,15 +66,7 @@ class Field extends Component {
         this.props.validateConfirmPasswordHandler();
     }
     
-    validateAll = () => {
-        for(let fieldKey in this.props.fieldsState) {
-            if(typeof this.props.fieldsState[fieldKey] === 'object') {
-                for(let index in this.props.fieldsState[fieldKey].validators) {
-                    this.props.validateHandler(fieldKey, this.props.fieldsState[fieldKey].validators[index], index);
-                }
-            } 
-        }
-    }
+    
 
     showErrors = (showAll) => {
         if(showAll) {
@@ -98,101 +89,26 @@ class Field extends Component {
 
     render() {
         
-        const {type} = this.props;
-        
-        switch(type) {
-            case 'username':
-                return (
-                    <FormGroup row>   
-                        <Col xs={6} className="mx-auto">
-                            <Label for="username" className="label-stylish">Username</Label>
-                            <Input 
-                                type="text" 
-                                value={this.state.value}
-                                name="username" 
-                                id="username" 
-                                onChange={this.changeHandler} 
-                                onFocus={this.focusHandler}
-                                onBlur={this.validate}
-                                invalid={this.errorsCheck()}
-                                placeholder="Enter username..." 
-                            />
-                            {this.showErrors(true)}
-                        </Col>
-                    </FormGroup>
-                );
-            case 'password':
-                return (
-                    <FormGroup row>   
-                        <Col xs={6} className="mx-auto">
-                            <Label for="password" className="label-stylish">Password</Label>
-                            <Input 
-                                id="password" 
-                                type="password" 
-                                name="password"
-                                onChange={this.changeHandler}
-                                onFocus={this.focusHandler}
-                                onBlur={this.validate}
-                                invalid={this.errorsCheck()}
-                                placeholder="Enter password..."
-                            />
-                            {this.showErrors(true)}
-                        </Col>
-                    </FormGroup>
-                );
-            case 'confirmPassword':
-                return (
-                    <FormGroup row>   
-                        <Col xs={6} className="mx-auto">
-                            <Label for="confirmPassword" className="label-stylish">Confirm password</Label>
-                            <Input 
-                                id="confirmPassword" 
-                                type="password" 
-                                name="confirmPassword"
-                                onChange={this.confirmPasswordChangeHandler}
-                                onFocus={this.confirmPasswordFocusHandler}
-                                onBlur={this.validateConfirmPassword}
-                                invalid={this.errorsCheck()}
-                                placeholder="Enter confirm password..."
-                            />
-                            {this.showErrors(true)}
-                        </Col>
-                    </FormGroup>
-                );    
-            case 'dateOfBirth':
-                return (
-                    <FormGroup row>   
-                        <Col xs={6} className="mx-auto">
-                            <Label for="dateOfBirth" className="label-stylish">Date of birth</Label>
-                            <Input 
-                                id="dateOfBirth" 
-                                type="text" 
-                                name="dateOfBirth" 
-                                onChange={this.changeHandler}
-                                onFocus={this.focusHandler}
-                                onBlur={this.validate}
-                                invalid={this.errorsCheck()}
-                                placeholder="Enter date of birth..."
-                            />
-                            {this.showErrors(true)}
-                        </Col>
-                    </FormGroup>
-                );
-            case 'submit':
-                return(
-                    <FormGroup row>   
-                        <Col xs={6} className="mx-auto">
-                            <Button 
-                                color="success" 
-                                size="md" 
-                                className="mx-auto btn-width"
-                                onClick={this.validateAll}
-                            >
-                            Click me</Button>
-                        </Col>
-                    </FormGroup>
-                )
-        }
+        const {type, fieldType, name} = this.props;
+        return (
+            <FormGroup row>   
+                <Col xs={6} className="mx-auto">
+                    <Label for="username" className="label-stylish">{name}</Label>
+                    <Input 
+                        type={fieldType} 
+                        value={this.state.value}
+                        name={type} 
+                        id={type} 
+                        onChange={this.changeHandler} 
+                        onFocus={this.focusHandler}
+                        onBlur={this.validate}
+                        invalid={this.errorsCheck()}
+                        placeholder={`Enter ${name}...`}
+                    />
+                    {this.showErrors(true)}
+                </Col>
+            </FormGroup>
+        ); 
     }
 }
 
