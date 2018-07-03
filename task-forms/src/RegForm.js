@@ -62,12 +62,11 @@ class RegForm extends PureComponent {
     const { password, confirmPassword } = fields;
     if(this.isValid({password, confirmPassword})) {
       if(password.value !== confirmPassword.value){
-        const cpass = {...fields.confirmPassword};
-        cpass.errors.push("Passoword and confirm password must be the equil");
-        fields.confirmPassword = cpass;  
+        const confirmPass = {...fields.confirmPassword};
+        confirmPass.errors.push("Passoword and confirm password must be the equil");
+        fields.confirmPassword = {...confirmPass};  
       }
     }
-    fields.confirmPassword = {...confirmPassword};
     return fields;
   };
 
