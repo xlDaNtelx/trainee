@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  height: 130vh;
+  background: linear-gradient(white, #D3D8E8);
+ /* overflow: hidden; */
+}
+
+.form-margin {
+  padding-top: 30px;
+}
+
+.form-control {
+  border: 2.5px solid cadetblue;
+}
+
+.label-stylish {
+  color: rgb(34, 103, 105);
+  font-weight: bolder;
+}
+
+.btn-width {
+    width: 30%;
+    margin-left: 15%;
+    margin-top: 10px;
+}
