@@ -18,10 +18,22 @@ body {
 .label-stylish {
   color: rgb(34, 103, 105);
   font-weight: bolder;
+  margin-bottom: .3rem;
 }
 
 .btn-width {
-    width: 30%;
-    margin-left: 15%;
+    width: 100%;
     margin-top: 10px;
+}
+
+.container {
+  width: 40%;
+}
+
+.nameHolder {
+  text-align: center;
+}
+
+.field-wrapper-margin {
+  margin-top: 10px;
 }
