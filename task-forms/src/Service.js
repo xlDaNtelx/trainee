@@ -12,26 +12,21 @@ export class FormService {
   }
 
   onFocus(name) {
-    const field = {...this.allFields[name]};
-    field.dirty = true;
-    field.focused = true;
-    this.allFields[name] = {...field };
+    this.allFields[name].dirty = true;
+    this.allFields[name].focused = true;
     this.allFields = this.validateFields(this.allFields);
     this.validateForm(this.allFields);
   }
 
   onChange(name, value) {
-    const field = { ...this.allFields[name] };
-    field.value = value;
+    this.allFields[name].value = value;
     this.update(name, value);
-    const fields = this.validateFields({ ...this.allFields, [name]: field });
-    this.validateForm(fields);
+    this.allFields = this.validateFields(this.allFields);
+    this.validateForm(this.allFields);
   }
 
   onBlur(name) {
-    const field = {...this.allFields[name]};
-    field.focused = false;
-    this.allFields[name] = {...field};
+    this.allFields[name].focused = false;
     this.allFields = this.validateFields(this.allFields);
     this.validateForm(this.allFields);
   }
@@ -39,9 +34,7 @@ export class FormService {
   onSubmit() {
     const fields = {};
     Object.entries(this.allFields).forEach(([name]) => {
-      const field = {...this.allFields[name]};
-      field.dirty = true;
-      fields[name] = field;
+      this.allFields[name].dirty = true;
     });
     this.allFields = this.validateFields(fields);
     this.validateForm(this.allFields);
@@ -51,8 +44,7 @@ export class FormService {
   }
 
   update(name, value) {
-    const fields = this.getFields();
-    fields[name].value = value;
+    this.allFields[name].value = value;
   }
 
   validateForm = (fields = this.allFields) => {
