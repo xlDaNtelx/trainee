@@ -5,13 +5,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import ModalExample from './Modal';
 import {changeActivity} from '../store/actions'
+import 'bootstrap/dist/js/bootstrap.min.js';
 
 
 class MainComponent extends React.Component {
   render() {
     const { isActive, changeActivity } = this.props;
     return <div>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button className="btn-styler" onClick={() => {
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button data-target="#redux-modal" data-toggle="modal" className="btn-styler" onClick={() => {
             changeActivity(isActive);
           }}>
           Click me
@@ -44,17 +45,28 @@ const mapActionsToProps = (dispatch) => {
 
 function Child(props) {
   return (
-    <div className={`modal ${props.isActive ? '' : 'disabled'}`} onClick={props.onClick}>
-      <div className="modal-container">
-        <div className="modal-header">Form with Redux</div>
+    <div id="redux-modal" className={`fade modal ${props.isActive ? '' : 'disabled'}`} tabindex="-1" role="dialog">
+      <div className="modal-dialog" role="document">
         <div className="modal-content">
-          Eu cillum elit voluptate consequat officia tempor eu ea sit sint.
-          Eu cillum elit voluptate consequat officia tempor eu ea sit sint.
-          Eu cillum elit voluptate consequat officia tempor eu ea sit sint.
-          Eu cillum elit voluptate consequat officia tempor eu ea sit sint.
-          Eu cillum elit voluptate consequat officia tempor eu ea sit sint.
+          <div className="modal-header">
+            <h5 className="modal-title">Modal title</h5>
+            <button type="button" onClick={props.onClick} className="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div className="modal-body">
+            <p>
+              Eu cillum elit voluptate consequat officia tempor eu ea sit sint.
+              Eu cillum elit voluptate consequat officia tempor eu ea sit sint.
+              Eu cillum elit voluptate consequat officia tempor eu ea sit sint.
+              Eu cillum elit voluptate consequat officia tempor eu ea sit sint.
+            </p>
+          </div>
+          <div className="modal-footer">
+            <button type="button" className="btn btn-secondary" onClick={props.onClick} data-dismiss="modal">Close</button>
+            <button type="button" className="btn btn-primary" onClick={props.onClick} data-dismiss="modal">Save changes</button>
+          </div>
         </div>
-        <button className="modal-btn">Click</button>
       </div>
     </div>
   );
