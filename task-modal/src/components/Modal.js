@@ -1,40 +1,36 @@
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 import './style.css';
 
-class ModalExample extends React.Component {
+class Modal extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      modal: false,
-    };
-
-    this.toggle = this.toggle.bind(this);
+    console.log(props.modalRoot);
+    this.modalRootState = document.getElementById(props.modalRoot);
+    this.el = document.createElement('div');
   }
 
-  toggle() {
-    this.props.onClick(this.props.isActive);
-    this.setState({
-      modal: !this.state.modal
-    });
+  componentDidMount() {
+    this.modalRootState.appendChild(this.el);
   }
-  
+
+  componentWillUnmount() {
+    this.modalRootState.removeChild(this.el);
+  }
+
   render() {
-    return (
-      <div>
-        <Button color="success" className="btn-middle" size="lg" onClick={this.toggle}>{this.props.buttonLabel}</Button>
-        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalBody>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </ModalBody>
-          <ModalFooter>
-            <Button color="primary" onClick={this.toggle}>Close window</Button>{' '}
-            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-          </ModalFooter>
-        </Modal>
-      </div>
+    return ReactDOM.createPortal(
+      this.props.children,
+      this.el,
     );
   }
 }
 
-export default ModalExample;
+Modal.propTypes = {
+  modalRoot: PropTypes.string
+};
+
+export default Modal;
