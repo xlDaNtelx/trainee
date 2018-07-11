@@ -1,0 +1,36 @@
+.book-container {
+  background-image: url('/book.png');
+  background-size: cover;
+  height: 300px;
+  margin-top: 15px;
+  transition: all .2s ease-out;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.book-container:hover {
+  box-shadow: inset 5px 20px 40px rgba(255, 255, 255, 0.9); 
+}
+
+.book-title-holder, .book-id-holder {
+  text-align: center;
+  padding-top: 50px;
+  padding-right: 10%;
+}
+
+.book-count-holder {
+  text-align: center;
+  padding-top: 100px;
+  padding-right: 10%;
+}
+
+.book-title, .book-id, .book-count {
+  text-align: center;
+  background-color: rgba(243, 173, 116, 0.7);
+  display: inline-block;
+  color: #201e1e;
+  font-family: 'Comic Sans MS';
+  border-radius: .2rem;
+}
+
+
