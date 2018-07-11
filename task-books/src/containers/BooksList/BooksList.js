@@ -1,7 +1,8 @@
 import React from 'react'
-import { getAllBooks } from '../store/actions';
+import Loader from '../../components/Loader';
+import { getAllBooks } from '../../store/actions/books.thunk';
 import {connect} from 'react-redux';
-import './loader.css';
+
 
 class Bookslist extends React.Component {
   
@@ -13,9 +14,9 @@ class Bookslist extends React.Component {
 
   render() {  
 
-    const { data, loading } = this.props.books;
+  const { books, loading } = this.props.data;
 
-  const bookList = data.map( (book) =>
+  const bookList = books.map( (book) =>
     <div className="col-md-3" key={book.ID}>
       <div className="book-container">
         <div className="book-id-holder">
@@ -34,17 +35,7 @@ class Bookslist extends React.Component {
     return (
       <div className="container">
         <div className="row">
-          <div id="loader" className={loading ? 'show' : 'hide'}>
-            <div className="dot"></div>
-            <div className="dot"></div>
-            <div className="dot"></div>
-            <div className="dot"></div>
-            <div className="dot"></div>
-            <div className="dot"></div>
-            <div className="dot"></div>
-            <div className="dot"></div>
-            <div className="lading"></div>
-          </div>
+          <Loader loading={loading}/>
           {bookList}
         </div>
       </div>
@@ -54,8 +45,8 @@ class Bookslist extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    books: state
+    data: state
   }
 }
 
-export default connect(mapStateToProps)(Bookslist);;
+export default connect(mapStateToProps)(Bookslist);
