@@ -49,28 +49,4 @@ const mapActionsToProps = (dispatch) => {
   };
 };
 
-// class Modal extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.el = document.createElement('div');
-//   }
-
-//   componentDidMount() {
-//     modalRootState.appendChild(this.el);
-//   }
-
-//   componentWillUnmount() {
-//     modalRootState.removeChild(this.el);
-//   }
-
-//   render() {
-//     return ReactDOM.createPortal(
-//       this.props.children,
-//       this.el,
-//     );
-//   }
-// }
-
-
-
 export default connect(mapStateToProps, mapActionsToProps)(MainComponent);

@@ -36,7 +36,7 @@ class Child extends React.Component {
 }
 
 Child.propTypes = {
-  isActive: PropTypes.bool,
+  isActive: PropTypes.bool.isRequired,
   onClick: PropTypes.func
 };
 
