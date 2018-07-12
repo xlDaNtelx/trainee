@@ -1,20 +1,16 @@
 
-import { requestAction, errorAction } from './books';
-import { BOOKS_SUCCESS } from './actionsTypes';
+import { requestAction, successAction, errorAction } from './books';
 import { getBooks } from '../../api/books';
 
 export const getAllBooks = () => {
   return (dispatch) => {
-    dispatch(requestAction);
-    getBooks
-      .then(({data}) => {
-        dispatch({
-          type: BOOKS_SUCCESS,
-          payload: {books: data, loading: false}
-        })
-      })
-      .catch(() => {
-        dispatch(errorAction);
-      })
+    dispatch(requestAction());
+    setTimeout(() => getBooks
+    .then(({data}) => {
+      dispatch(successAction(data));
+    })
+    .catch((error) => {
+      dispatch(errorAction(error));
+    }), 3000);
   }
 }

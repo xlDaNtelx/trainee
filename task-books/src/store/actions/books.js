@@ -1,11 +1,26 @@
 import * as actionsTypes from './actionsTypes';
 
-console.log(actionsTypes.BOOKS_REQUEST);
-
-export const requestAction = {
-  type: actionsTypes.BOOKS_REQUEST, payload: {books: []}
+export const requestAction = () => {
+  return {
+    type: actionsTypes.BOOKS_REQUEST,
+    payload: [],
+    loading: true 
+  };
 };
 
-export const errorAction = {
-  type: actionsTypes.BOOKS_ERROR, payload: {books: [], loading: false, error: true}
+export const errorAction = (error) => {
+  return {
+    type: actionsTypes.BOOKS_ERROR,
+    payload: error.toString(),
+    error: true
+  };
+};
+
+export const successAction = (data) => {
+  const winNum = Math.round(Math.random() * 7);
+  data[winNum].lucky = true;
+  return {
+    type: actionsTypes.BOOKS_SUCCESS,
+    payload: data
+  };
 };

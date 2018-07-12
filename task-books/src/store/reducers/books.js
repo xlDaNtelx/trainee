@@ -2,7 +2,8 @@ import { BOOKS_REQUEST, BOOKS_SUCCESS, BOOKS_ERROR } from '../actions/actionsTyp
 
 const initialState = {
   books: [],
-  loading: true
+  loading: false,
+  error: ''
 };
 
 export const bookReducer = (state = initialState, action) => {
@@ -10,9 +11,9 @@ export const bookReducer = (state = initialState, action) => {
       case BOOKS_REQUEST :
         return {...state, loading: true};
       case BOOKS_SUCCESS :
-        return {...state, ...action.payload};
+        return {...state, books: action.payload, loading: false};
       case BOOKS_ERROR :
-        return {...state, ...action.payload};
+        return {...state, loading: false, error: action.payload};
       default:
         return state;
     }

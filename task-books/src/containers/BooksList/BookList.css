@@ -1,0 +1,102 @@
+.prev {
+  margin-left: 2%;
+}
+
+.prev, .next {
+  margin-top: 20px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50% !important;
+  color: white !important;
+  font-size: 24px !important;
+  font-family: 'Comic Sans MS';
+  background-color: #ff7f00 !important;
+  position: relative;
+  border: 2px solid black;
+  transition: all ease-out .1s;
+  cursor: pointer;
+}
+
+.prev:disabled, .next:disabled {
+  opacity: .6;
+  border: none;
+  cursor: default;
+}
+
+.prev:disabled:hover {
+  box-shadow: none;
+}
+
+.next:disabled:hover {
+  box-shadow: none;
+}
+
+.prev:hover, .next:hover {
+  box-shadow: 0px 0px 10px black;
+}
+
+.prev::before {
+  content: "<<";
+  position: absolute;
+  left: -45px;
+  top: 15px;
+  color: #ff7f00;
+  font-size: 44px;
+}
+
+.next {
+  margin-left: .060%;
+}
+
+.next::after {
+  content: ">>";
+  position: absolute;
+  left: 110px;
+  top: 15px;
+  color: #ff7f00;
+  font-size: 44px;
+}
+
+.hide {
+  display: none !important;
+}
+
+.controls {
+  margin-bottom: 15px;
+}
+
+.lucky {
+  color: red;
+}
+
+.pagination {
+  padding-top: 55px;
+}
+
+.pagination-item {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  border: 2px solid white;
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+  font-size: 12px;
+  line-height: 30px;
+  text-align: center;
+  background-color: #ff7f00;
+  color: white !important;
+  font-family: 'Comic Sans MS';
+  border: 2px solid black;
+  margin-left: .5px;
+  margin-right: .5px;
+  cursor: pointer;
+}
+
+.pagination-item:hover {
+  box-shadow: 0px 0px 10px black;
+}
+
+.active-item {
+  background-color: #8b3707;
+}
