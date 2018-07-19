@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loader renders with loading param 1`] = `
+<div
+  className="show"
+  id="loader"
+  style={
+    Object {
+      "opacity": 0.5,
+    }
+  }
+>
+  <div
+    className="dot"
+  />
+  <div
+    className="dot"
+  />
+  <div
+    className="dot"
+  />
+  <div
+    className="dot"
+  />
+  <div
+    className="dot"
+  />
+  <div
+    className="dot"
+  />
+  <div
+    className="dot"
+  />
+  <div
+    className="dot"
+  />
+  <div
+    className="lading"
+  />
+</div>
+`;
+
+exports[`Loader renders with opacity 1`] = `
+<div
+  className="hide"
+  id="loader"
+  style={
+    Object {
+      "opacity": 0.5,
+    }
+  }
+>
+  <div
+    className="dot"
+  />
+  <div
+    className="dot"
+  />
+  <div
+    className="dot"
+  />
+  <div
+    className="dot"
+  />
+  <div
+    className="dot"
+  />
+  <div
+    className="dot"
+  />
+  <div
+    className="dot"
+  />
+  <div
+    className="dot"
+  />
+  <div
+    className="lading"
+  />
+</div>
+`;

@@ -45,7 +45,11 @@
 }
 
 .next {
-  margin-left: .060%;
+  margin-left: 2%;
+}
+
+.small {
+  margin-left: 480px;
 }
 
 .next::after {
@@ -65,16 +69,22 @@
   margin-bottom: 15px;
 }
 
+
 .lucky {
   color: red;
 }
 
 .pagination {
   padding-top: 55px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  display: block !important;
+  max-width: 900px;
 }
 
 .pagination-item {
-  display: inline-block;
+  display: block;
+  float: left;
   width: 35px;
   height: 35px;
   border: 2px solid white;
@@ -99,4 +109,10 @@
 
 .active-item {
   background-color: #8b3707;
+}
+
+.spacer {
+  font-size: 30px;
+  display: block;
+  float: left;
 }

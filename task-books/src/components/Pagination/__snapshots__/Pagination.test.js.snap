@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination renders with all params 1`] = `
+<div>
+  <div
+    className="row controls"
+  >
+    <button
+      className="prev small"
+      disabled={true}
+      onClick={[Function]}
+      type="button"
+    >
+      Prev
+    </button>
+    <button
+      className="next"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Next
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Pagination renders without some param 1`] = `
+<div>
+  <div
+    className="row controls"
+  >
+    <button
+      className="prev small"
+      disabled={true}
+      onClick={[Function]}
+      type="button"
+    >
+      Prev
+    </button>
+    <button
+      className="next"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Next
+    </button>
+  </div>
+</div>
+`;

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error renders with error in params 1`] = `
+<div
+  className="showError alert alert-danger fade"
+  role="alert"
+>
+  Some error
+</div>
+`;
+
+exports[`Error renders without error 1`] = `
+<div
+  className="hideError alert alert-danger fade"
+  role="alert"
+>
+  
+</div>
+`;

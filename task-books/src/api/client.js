@@ -3,3 +3,5 @@ import { apiURL } from './consts';
 
 export const client = axios.create();
 client.defaults.baseURL = apiURL;
+
+export default client;

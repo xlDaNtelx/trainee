@@ -1,33 +1,38 @@
 #loader {
-  bottom: 0;
-  height: 175px;
-  left: 0;
-  margin: auto;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 175px;
-}
-#loader .dot {
-  bottom: 0;
   height: 100%;
   left: 0;
   margin: auto;
   position: absolute;
   right: 0;
   top: 0;
-  width: 45.5px;
+  z-index: 999;
+  width: 1140px;
+  /* opacity: .7; */
+  background-color: white;
+  min-height: 700px
+}
+#loader .dot {
+  bottom: 0;
+  height: 5%;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 245.5px;
+  opacity: 1 !important;
 }
 #loader .dot::before {
   border-radius: 100%;
   content: "";
-  height: 45.5px;
+  height: 55.5px;
   left: 0;
   position: absolute;
   right: 0;
   top: 0;
   transform: scale(0);
-  width: 45.5px;
+  width: 55.5px;
+  opacity: 1;
 }
 #loader .dot:nth-child(7n+1) {
   transform: rotate(45deg);
@@ -111,4 +116,13 @@
 
 .hide {
   display: none;
+}
+
+.dirty {
+  opacity: .5;
+  background-color: white !important;
+}
+
+.dirty .dot:before {
+  background-color: #ff7f00 !important;
 }

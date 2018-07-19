@@ -1,26 +1,43 @@
 import * as actionsTypes from './actionsTypes';
 
-export const requestAction = () => {
-  return {
-    type: actionsTypes.BOOKS_REQUEST,
-    payload: [],
-    loading: true 
-  };
-};
+/**
+ * Starts getting books request.
+ *
+ * @param {number} page - Number of current page.
+ * @param {number} perPage - Number of pages that must be show in one page.
+ * @returns FluxStandardAction
+ */
+export const fetchBooksRequest = (page, perPage) => ({
+  type: actionsTypes.BOOKS_REQUEST,
+  payload: {
+    books: [],
+    loading: true,
+    page,
+    perPage
+  }
+});
 
-export const errorAction = (error) => {
-  return {
-    type: actionsTypes.BOOKS_ERROR,
-    payload: error.toString(),
-    error: true
-  };
-};
+/**
+ * Return Error in String format.
+ *
+ * @param {Object|string} error - Number of current page.
+ * @returns FluxStandardAction
+ */
+export const fetchBooksError = (error = 'Very unexpected error') => ({
+  type: actionsTypes.BOOKS_ERROR,
+  payload: error.toString(),
+  error: true,
+});
 
-export const successAction = (data) => {
-  const winNum = Math.round(Math.random() * 7);
-  data[winNum].lucky = true;
-  return {
-    type: actionsTypes.BOOKS_SUCCESS,
-    payload: data
-  };
-};
+/**
+ * Return all books from request, page and perPage.
+ *
+ * @param {array} books - Array of books items.
+ * @param {number} page - Number of current page.
+ * @param {number} perPage - Number of pages that must be show in one page.
+ * @returns FluxStandardAction
+ */
+export const fetchBooksSuccess = (books, page, perPage) => ({
+  type: actionsTypes.BOOKS_SUCCESS,
+  payload: { books, page, perPage },
+});

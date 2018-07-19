@@ -1,3 +1,7 @@
+body {
+  position: relative;
+}
+
 .book-container {
   background-image: url('/book.png');
   background-size: cover;

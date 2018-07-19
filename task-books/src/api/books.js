@@ -1,3 +1,12 @@
 import { client } from './client';
 
-export const getBooks = client.get('Books');
+/**
+ * Get all books requests using Axios.
+ *
+ * @requires module{Axios}
+ * @exports
+ * @public
+ */
+export const getAllBooks = () => client.get('Books');
+
+export default getAllBooks;

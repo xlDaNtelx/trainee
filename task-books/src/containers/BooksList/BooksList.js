@@ -1,103 +1,127 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Loader from '../../components/Loader';
 import Error from '../../components/Error';
-import PropTypes from 'prop-types';
-import { getAllBooks } from '../../store/actions/books.thunk';
-import { connect } from 'react-redux';
+import Pagination from '../../components/Pagination';
+import EmptyData from '../../components/EmptyData';
+import { fetchBooksRequest } from '../../store/actions/books';
 import './BookList.css';
 
 
 class Bookslist extends React.Component {
-  constructor(props) {
-    super(props);
-    this.curPage = 0;
-    this.books = [];
-  }
-
   componentDidMount() {
-    this.props.dispatch(getAllBooks());
+    const { perPage, dispatch } = this.props;
+    dispatch(fetchBooksRequest(1, perPage));
+    this.loadPage = this.loadPage.bind(this);
   }
 
-  getId(pageNum) {
-    return 8 * pageNum;
-  }
-
-  setPage() {
-    return this.books.filter((elem) => elem.ID > this.getId(this.curPage) && elem.ID <= this.getId(this.curPage + 1)).map((book) =>
+  /**
+  * Generate all books items for show.
+  *
+  * @param {Array} books - array of books
+  * @public
+  */
+  setPage(books) {
+    return books.map(book => (
       <div className="col-md-3" key={book.ID}>
         <div className="book-container">
           <div className="book-id-holder">
-            <div className="book-id">Id: {book.ID}</div>
+            <div className="book-id">
+              Id:
+              {book.ID}
+            </div>
           </div>
           <div className="book-title-holder">
-            <div className="book-title">Name: {book.Title} <span className="lucky">{`${book.lucky ? '*' : ''}`}</span></div>
+            <div className="book-title">
+              Name:
+              {book.Title}
+              {' '}
+              <span className="lucky">
+                {`${book.lucky ? '*' : ''}`}
+              </span>
+            </div>
           </div>
           <div className="book-count-holder">
-            <div className="book-count">Pages: {book.PageCount}</div>
+            <div className="book-count">
+              Pages:
+              {book.PageCount}
+            </div>
           </div>
         </div>
       </div>
-    )
+    ));
   }
 
-  getPage = (event) => {
-    this.curPage = parseInt(event.target.innerHTML) - 1;
-    this.forceUpdate();
-  }
-
-  nextPage = () => {
-    this.curPage <= 25 ? this.curPage++ : this.curPage;
-    this.forceUpdate();
-  }
-
-  prevPage = () => {
-    this.curPage >= 0 ? this.curPage-- : this.curPage;
-    this.forceUpdate();
-  }
-
-  setPagination() {
-    const pagArray = [];
-    for(let i = 0; i < 25; i++) {
-      pagArray.push(<span key={i} className={`pagination-item ${this.curPage === i ? 'active-item' : ''}`} onClick={this.getPage} >{i+1}</span>);
-    }
-      return <div className="pagination">{pagArray}</div>
+  /**
+  * Load new books items for page using pagination.
+  *
+  * @param {number} page - Number of current page.
+  * @param {number} perPage - Number of pages that must be show in one page.
+  * @public
+  */
+  loadPage(page, perPage) {
+    const { dispatch } = this.props;
+    dispatch(fetchBooksRequest(page, perPage));
   }
 
   render() {
-    this.books = this.props.books;
-    const loading = this.props.loading;
-    const error = this.props.error;
-
-    const bookList = this.setPage();
+    const {
+      books, loading, error, page, perPage, count,
+    } = this.props;
+    const bookList = this.setPage(books);
     return (
-      <div className="container">
+      <React.Fragment>
+        <Loader opacity={books.length ? 0.5 : 1} loading={loading} />
+        {books.length === 0 && !error && !loading && <EmptyData />}
         <Error error={error} />
-        <div className="row">
-          <Loader loading={loading} />
-          {bookList}
-        </div>
-        <div className={`row ${loading ? 'hide' : 'controls'}`}>
-          <button type="button" className="prev" disabled={this.curPage === 0} onClick={this.prevPage}>Prev</button>
-          {this.setPagination()}
-          <button type="button" className="next" disabled={!(this.curPage < 24)} onClick={this.nextPage}>Next</button>
-        </div>
-      </div>
-    )
+        {!!(!error && books.length) && (
+          <div className="container">
+            <div className="row">
+              {!error && bookList}
+            </div>
+            <Pagination
+              perPage={perPage}
+              page={page}
+              count={count}
+              onChange={this.loadPage}
+            />
+          </div>
+        )}
+      </React.Fragment>
+    );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    books: state.books,
-    loading: state.loading,
-    error: state.error
-  }
-}
+const mapStateToProps = state => ({
+  books: state.books,
+  loading: state.loading,
+  page: state.page,
+  perPage: state.perPage,
+  count: state.count,
+  error: state.error,
+});
 
 Bookslist.propTypes = {
+  /** Array of books items */
   books: PropTypes.array,
-  loading: PropTypes.bool,
-  error: PropTypes.string
+  /** State of loading page */
+  loading: PropTypes.bool.isRequired,
+  /** Text of error if request was fail */
+  error: PropTypes.string.isRequired,
+  /** Count of books elements */
+  count: PropTypes.number.isRequired,
+  /** Count of elements to show in one page */
+  perPage: PropTypes.number.isRequired,
+  /** Dispatch function */
+  dispatch: PropTypes.func.isRequired,
+  /** Current page to show */
+  page: PropTypes.number,
+};
+
+Bookslist.defaultProps = {
+  page: 1,
+  books: []
 };
 
 export default connect(mapStateToProps)(Bookslist);
