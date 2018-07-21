@@ -35,7 +35,8 @@ export class LoginForm extends React.Component {
 
 LoginForm = reduxForm({
   form: 'login',
-  destroyOnUnmount: false
+  destroyOnUnmount: false,
+  enableReinitialize: true 
 })(LoginForm);
 
 export default LoginForm;

@@ -12,7 +12,6 @@ import '../steps.css';
 export class AdditionalForm extends React.Component {
   render() {
     const { match, dispatch, invalid } = this.props;
-    console.log(this.props);
     return (
       <Container className="additional-container">
         <Row className="justify-content-center">
@@ -38,7 +37,6 @@ export class AdditionalForm extends React.Component {
 };
 
 AdditionalForm = reduxForm({
-  // a unique name for the form
   form: 'additional',
   destroyOnUnmount: false
 })(AdditionalForm);

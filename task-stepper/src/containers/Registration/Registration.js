@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   BrowserRouter as Router,
   Route,
@@ -17,17 +18,13 @@ import StepCongratulation from './Steps/StepCongratulation';
 import './registration.css';
 
 class Registration extends React.Component {
-
-  componentDidMount() {
-    console.log(this.props);
-  }
-
   render() {
-    const { match, wasLogin, wasPassword, wasAdditional } = this.props;
+    const { 
+      match, wasLogin, wasPassword, wasAdditional, login, password, additional 
+    } = this.props;
     return (
       <Router>
         <React.Fragment>
-          {/* <Button color="danger" className="main-promo-btn btn-start">st</Button></Link> */}
           <Route exact path={`${match.url}`} component={RegistrationIndex} />
           <Route path={`${match.path}/stepLogin`} component={StepLogin} />
           <Route path={`${match.path}/stepPassword`} render={() => (
@@ -43,7 +40,7 @@ class Registration extends React.Component {
           <Route path={`${match.url}/stepCongratulation`} render={() => (
             !wasLogin || !wasPassword || !wasAdditional 
               ? ( <Redirect to="/registration" /> ) 
-              : ( <StepCongratulation /> )
+              : ( <StepCongratulation login={login} password={password} additional={additional} /> )
           )} />
         </React.Fragment>
       </Router>
@@ -52,12 +49,21 @@ class Registration extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  // console.log(state);
   return {
     wasLogin: state.steps.wasLogin, 
     wasPassword: state.steps.wasPassword, 
-    wasAdditional: state.steps.wasAdditional 
+    wasAdditional: state.steps.wasAdditional,
+    login: state.form.login,
+    password: state.form.password,
+    additional: state.form.additional,
   };
+};
+
+Registration.defaultProps = {
+  loginValue: '',
+  passwordValue: '',
+  additionalValue: ''
 };
 
 export default connect(mapStateToProps)(Registration);

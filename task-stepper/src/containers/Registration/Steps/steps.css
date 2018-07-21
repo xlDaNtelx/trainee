@@ -111,3 +111,22 @@ h3 {
   font-size: 46px;
   font-family: 'Comic Sans MS';
 }
+
+.congratulation-result {
+  font-size: 16px;
+  display: block;
+}
+
+.congratulation-result-title {
+  text-decoration: underline;
+}
+
+.congratulation-separator {
+  margin-top: 1rem;
+  margin-bottom: 0rem;
+  border: 0;
+  border-top-color: currentcolor;
+  border-top-style: none;
+  border-top-width: 0px;
+  border-top: 5px solid rgba(0,0,0,.6);
+}
