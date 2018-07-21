@@ -1,0 +1,22 @@
+.reg-title {
+  background-color: black;
+  color: white;
+  font-family: 'Comic Sans MS';
+  margin-top: 20px;
+  border-radius: .2rem;
+}
+
+.reg-form-background {
+  background-image: url('../../img/matrix.jpg');
+  min-height: 651px;
+  box-shadow: 0px 0px 10px 15px black;
+}
+
+.reg-form-start {
+  margin-top: 100px;
+  margin-left: 200px;
+  width: 300px;
+  font-size: 38px !important;
+  box-shadow: 0px 0px 5px 5px #007bfa;
+  font-family: 'Comic Sans MS';
+}

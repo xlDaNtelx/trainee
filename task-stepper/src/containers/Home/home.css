@@ -1,0 +1,52 @@
+.header-title {
+  font-family: 'Comic Sans MS';
+}
+
+.main-promo-wrapper {
+  margin-top: 260px;
+  color: white;
+  text-shadow: 2px 2px white;
+}
+
+.main-promo-text {
+  font-size: 48px;
+  font-family: 'Comic Sans MS';
+  background-color: #333;
+  opacity: .9;
+  border-radius: .4rem;
+}
+
+.main-promo-btn-wrapper {
+  margin-top: 222px;
+}
+
+.main-promo-btn {
+  width: 150px;
+  font-size: 24px;
+  font-weight: bolder;
+  border-radius: 1.1rem;
+}
+
+.btn-start {
+  box-shadow: 0px 0px 20px 10px #dc3545;
+}
+
+.btn-start > a {
+  color: white;
+}
+
+.btn-exit {
+  box-shadow: 0px 0px 20px 10px #0069d9;
+}
+
+.btn-exit > a {
+  color: white;
+}
+
+.main-container {
+  background-image: url('../../img/morpheus.jpg');
+  background-size: 100% 100vh;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  box-shadow: 0px 0px 10px 15px black;
+}
