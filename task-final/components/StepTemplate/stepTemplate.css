@@ -1,0 +1,65 @@
+.prev-btn {
+  float: left;
+  color: #939292 !important;
+  cursor: pointer;
+}
+
+.next-btn {
+  float: right;
+  background-color: #fff;
+  border: none;
+  color: #68aae9;
+  cursor: pointer;
+}
+
+.next-btn:after {
+  content: '\1F862';
+  margin-left: 5px;
+}
+
+.step-wrapper {
+  min-width: 450px !important;
+  margin: 80px auto;
+  min-height: 550px !important;
+  border-width: 2px;
+  border-color: #ccc;
+  border-radius: 15px !important;
+}
+
+.step-footer, .step-header {
+  background-color: #fff;
+  min-height: 51px;
+  line-height: 35px;
+}
+
+.step-header {
+  color: #68aae9;
+  border-top-left-radius: 15px !important;
+  border-top-right-radius: 15px !important;
+  text-align: center;
+  border-bottom: none;
+}
+
+.step-footer {
+  border-bottom-left-radius: 15px !important;
+  border-bottom-right-radius: 15px !important;
+}
+
+.step-progress {
+  border-radius: 0 !important;
+  height: .8em !important;
+  background-color: #fff !important;
+  border: 2px solid #dfdfdf !important;
+  border-left: none !important;
+  border-right: none !important;
+  overflow: visible !important;
+}
+
+.step-progress > div {
+  height: .8em;
+  margin-top: -2px;
+}
+
+.disabled {
+  opacity: .6;
+}

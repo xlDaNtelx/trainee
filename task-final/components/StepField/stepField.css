@@ -1,0 +1,93 @@
+.step-field {
+  border-radius: 0px;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 2px;
+  /* width: 90%; */
+}
+
+.step-field-wrapper {
+  margin: 0 auto;
+}
+
+.step-field-wrapper input:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0rem rgba(0,123,255,.25);
+}
+
+.step-label {
+  color: #777;
+}
+
+.step-margin {
+  margin-top: 50px;
+}
+
+.error {
+  color: red;
+}
+
+.step-date {
+  width: 33%;
+  display: block;
+  float: left;
+  max-height: 59px;
+  text-align: center;
+  min-height: 50px;
+}
+
+.step-date input {
+  border: 1px solid #ced4da;
+  min-height: 50px;
+  text-align: center;
+}
+
+.step-sex {
+  position: relative;
+  width: 33%;
+  display: block;
+  float: left;
+  text-align: center;
+  min-height: 50px;
+  margin-top: 50px;
+}
+
+.step-sex input {
+  position: relative;
+  margin-top: .3rem;
+  margin-left: 0;
+  width: 100%;
+  border: none;
+}
+
+.step-sex label {
+  /* background-color: #68aae9; */
+  background-color: white;
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+  min-height: 50px;
+  line-height: 50px;
+  color: #777;
+  border: 1px solid #ced4da;
+  cursor: pointer;
+}
+
+.step-additional-title {
+  text-align: center;
+  width: 100%;
+  margin-bottom: .5rem;
+  color: #777;
+}
+
+
+.current {
+  background-color: #68aae9 !important;
+  color: white !important;
+  font-weight: bolder;
+}
+

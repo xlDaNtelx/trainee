@@ -1,0 +1,22 @@
+.main-wrapper {
+  margin: 0 auto;
+  text-align: center;
+  border: none;
+}
+
+.main-wrapper  button {
+  font-size: 36px !important;
+  /* font-family: 'Comic Sans MS'; */
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', sans-serif;
+  background-color: #0fbeff;
+  cursor: default !important;
+  font-weight: bolder;
+}
+
+.main-wrapper button:hover {
+  background-color: #0fbeff; 
+}
+
+.start-btn {
+  cursor: pointer;
+}
